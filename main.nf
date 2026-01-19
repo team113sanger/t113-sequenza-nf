@@ -110,8 +110,8 @@ workflow {
             [fmeta, bam]
         }
 
-    ch_meta_tumor_normal = prepared_tumor_bams
-        .join(prepared_normal_bams, by: [0])
+    ch_meta_tumor_normal = prepared_normal_bams
+        .join(prepared_tumor_bams, by: [0])
 
     if (params.toolslist.contains('cnvkit')) {
         // NOTE: it does not provide fasta.fai or CNVkit reference, but these are created every time
